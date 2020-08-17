@@ -1,0 +1,22 @@
+service: lambdamid
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: sa-east-1
+
+plugins:
+  - serverless-middleware
+
+custom:
+  middleware:
+    pre:
+      - handler.pre
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          path: /
+          method: get
