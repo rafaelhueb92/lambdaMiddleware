@@ -15,7 +15,9 @@ custom:
 
 functions:
   hello:
-    handler: handler.hello
+    handler: 
+     - handler.hello
+     - then: handler.pos
     events:
       - http:
           path: /

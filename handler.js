@@ -9,11 +9,12 @@ module.exports.pre = async (event, context) => {
 module.exports.pos = async (event, context) => {
   event.body.pos = true;
   console.log("Pos", event.body);
-  return { event, context };
+  return event.response;
 };
 
 module.exports.hello = async (event) => {
-  return {
+
+  event.response = {
     statusCode: 200,
     body: JSON.stringify(
       {
@@ -24,4 +25,5 @@ module.exports.hello = async (event) => {
       2
     ),
   };
+  return { event }
 };
